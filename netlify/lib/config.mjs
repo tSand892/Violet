@@ -3,7 +3,8 @@
 export function siteConfig() {
   const env = process.env;
   return {
-    name: env.SITE_NAME || 'Violet',
+    // BRAND_NAME, not SITE_NAME: Netlify injects its own read-only SITE_NAME (the subdomain).
+    name: env.BRAND_NAME || 'Violet',
     currency: (env.TIP_CURRENCY || 'usd').toLowerCase(),
     stripeEnabled: Boolean(env.STRIPE_SECRET_KEY),
     inviteRequired: Boolean(env.STREAMER_INVITE_CODE),
