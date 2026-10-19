@@ -3,10 +3,12 @@ import { handler, json, readJson, methods, HttpError, sleep } from '../lib/http.
 import { verifyPassword, issueToken } from '../lib/auth.mjs';
 import { users } from '../lib/store.mjs';
 import { cleanUsername, publicUser } from '../lib/validate.mjs';
+import { ensureSeedAccount } from '../lib/seed.mjs';
 
 export default handler(async (req) => {
   methods(['POST'], req);
   const body = await readJson(req);
+  await ensureSeedAccount();
 
   let username = null;
   try {

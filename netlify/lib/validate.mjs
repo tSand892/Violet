@@ -28,7 +28,7 @@ export function cleanDisplayName(value, fallback) {
 
 export function cleanPassword(value) {
   const p = String(value ?? '');
-  if (p.length < 8 || p.length > 200) throw new HttpError(400, 'Password must be at least 8 characters');
+  if (p.length < 6 || p.length > 200) throw new HttpError(400, 'Password must be at least 6 characters');
   return p;
 }
 

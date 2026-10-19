@@ -6,6 +6,7 @@ import { users, upsertStreamer } from '../lib/store.mjs';
 import { getLive } from '../lib/live.mjs';
 import { siteConfig } from '../lib/config.mjs';
 import { cleanUsername, cleanDisplayName, cleanChannel, defaultChannel } from '../lib/validate.mjs';
+import { ensureSeedAccount } from '../lib/seed.mjs';
 
 function channelView(user) {
   return { username: user.username, displayName: user.displayName, ...defaultChannel(), ...user.channel };
@@ -16,6 +17,7 @@ export default handler(async (req) => {
   const db = users();
 
   if (req.method === 'GET') {
+    await ensureSeedAccount();
     let username;
     try {
       username = cleanUsername(new URL(req.url).searchParams.get('c'));

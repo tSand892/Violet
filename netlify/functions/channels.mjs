@@ -3,9 +3,11 @@ import { handler, json, methods } from '../lib/http.mjs';
 import { meta } from '../lib/store.mjs';
 import { getLive } from '../lib/live.mjs';
 import { siteConfig } from '../lib/config.mjs';
+import { ensureSeedAccount } from '../lib/seed.mjs';
 
 export default handler(async (req) => {
   methods(['GET'], req);
+  await ensureSeedAccount();
 
   const streamers = (await meta().get('streamers')) || [];
   const states = await Promise.all(streamers.map((s) => getLive(s.username)));
