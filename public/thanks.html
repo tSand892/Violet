@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238b5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="dot"></span><span data-site-name>Violet</span></a>
+    <nav class="nav" id="nav"></nav>
+  </header>
+
+  <main class="center">
+    <div class="big">💜</div>
+    <h1>Thank you for the tip!</h1>
+    <p class="muted">Your tip will pop up on the stream in a few seconds. You can close this tab and head back to the stream.</p>
+    <p><a id="back" class="btn primary" href="/">Back to the stream</a></p>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script>
+    (function () {
+      var c = new URLSearchParams(location.search).get('c');
+      if (c && /^[a-z0-9_]{3,20}$/i.test(c)) document.getElementById('back').href = '/c/' + c.toLowerCase();
+      window.Violet.api.get('/api/channels').then(function (d) { window.Violet.renderNav(d.site); }).catch(function () {});
+    })();
+  </script>
+</body>
+</html>

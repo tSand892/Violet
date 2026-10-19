@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238b5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="dot"></span><span data-site-name>Violet</span></a>
+    <nav class="nav" id="nav"></nav>
+  </header>
+
+  <main class="auth">
+    <div class="card">
+      <div class="tabs">
+        <button id="tab-login" class="btn primary" type="button">Log in</button>
+        <button id="tab-signup" class="btn ghost" type="button">Sign up</button>
+      </div>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="login-username">Username</label>
+          <input id="login-username" autocomplete="username" autocapitalize="off" required>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn primary" type="submit" style="width:100%">Log in</button>
+      </form>
+
+      <form id="signup-form" class="hidden">
+        <div class="field">
+          <label for="su-username">Username</label>
+          <input id="su-username" autocomplete="username" autocapitalize="off" required
+                 pattern="[A-Za-z0-9_]{3,20}" title="3-20 letters, numbers or underscores">
+        </div>
+        <div class="field">
+          <label for="su-display">Display name</label>
+          <input id="su-display" maxlength="30" placeholder="Shown in chat and on your channel">
+        </div>
+        <div class="field">
+          <label for="su-password">Password</label>
+          <input id="su-password" type="password" autocomplete="new-password" minlength="8" required>
+        </div>
+        <div class="field">
+          <label class="check"><input type="checkbox" id="streamer"> I want to stream (streamer account)</label>
+        </div>
+        <div class="field hidden" id="invite-field">
+          <label for="invite">Streamer invite code</label>
+          <input id="invite" autocomplete="off">
+        </div>
+        <button class="btn primary" type="submit" style="width:100%">Create account</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/account.js"></script>
+</body>
+</html>

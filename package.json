@@ -1,0 +1,15 @@
+{
+  "name": "violet-live",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Live streaming with tips. Streamers broadcast from the browser, viewers watch, chat and tip.",
+  "scripts": {
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4",
+    "stripe": "^23.0.0"
+  }
+}

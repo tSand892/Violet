@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Violet</title>
+  <meta name="description" content="Live streams with chat and tips.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238b5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="dot"></span><span data-site-name>Violet</span></a>
+    <nav class="nav" id="nav"></nav>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <h1>Live right now</h1>
+      <p class="muted">Pick a channel to watch, chat, and send a tip.</p>
+    </section>
+
+    <section>
+      <div class="channel-grid" id="live-grid"></div>
+      <p id="live-empty" class="muted card">Nobody is live at the moment. This page refreshes on its own.</p>
+    </section>
+
+    <section>
+      <h2>All channels</h2>
+      <div class="channel-grid" id="all-grid"></div>
+      <p id="all-empty" class="muted card hidden">No streamers yet. <a href="/account?mode=signup">Create the first streamer account</a>.</p>
+    </section>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

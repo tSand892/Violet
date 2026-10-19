@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Watch</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238b5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="dot"></span><span data-site-name>Violet</span></a>
+    <nav class="nav" id="nav"></nav>
+  </header>
+
+  <main class="layout watch">
+    <section>
+      <div class="player">
+        <video id="video" autoplay playsinline></video>
+        <div id="overlay" class="overlay">
+          <div class="overlay-card">
+            <h2 id="overlay-title">Loading…</h2>
+            <p id="overlay-text" class="muted"></p>
+            <button id="overlay-btn" class="btn primary hidden" type="button">Tap to unmute</button>
+          </div>
+        </div>
+        <div id="alerts" class="alerts"></div>
+      </div>
+
+      <div class="stream-meta">
+        <div>
+          <h1 id="stream-title">Loading…</h1>
+          <p class="muted" id="streamer-name"></p>
+        </div>
+        <div class="meta-right">
+          <span id="status-pill" class="pill">Offline</span>
+          <span id="viewer-count" class="muted small">0 watching</span>
+        </div>
+      </div>
+
+      <section class="card" id="tip-card">
+        <h3>Send a tip 💜</h3>
+        <form id="tip-form">
+          <div id="tip-menu" class="menu-grid"></div>
+          <div id="custom-row" class="custom-row field">
+            <label for="tip-custom">Or a custom amount:</label>
+            <input id="tip-custom" type="number" min="1" max="500" step="0.01" inputmode="decimal" placeholder="e.g. 7.50">
+          </div>
+          <div class="field"><input id="tip-name" maxlength="40" placeholder="Your name (optional)"></div>
+          <div class="field"><input id="tip-message" maxlength="140" placeholder="Add a message (optional)"></div>
+          <button id="tip-submit" class="btn primary" type="submit">Tip</button>
+          <p class="muted small" style="margin-top:0.6rem">Secure checkout by Stripe. Opens in a new tab.</p>
+        </form>
+        <div id="tip-links" class="tip-links hidden"></div>
+        <p id="tip-disabled" class="muted hidden">Tips aren't set up for this channel yet.</p>
+      </section>
+    </section>
+
+    <aside class="card chat">
+      <h3>Chat</h3>
+      <div id="chat-log" class="chat-log"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-text" maxlength="280" placeholder="Say something…" autocomplete="off">
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+      <p id="chat-login" class="muted small hidden" style="margin:0.5rem 0 0"><a id="chat-login-link" href="/account">Log in</a> to join the chat.</p>
+    </aside>
+  </main>
+
+  <script src="/vendor/peerjs.min.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/watch.js"></script>
+</body>
+</html>

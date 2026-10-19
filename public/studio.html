@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238b5cf6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="dot"></span><span data-site-name>Violet</span></a>
+    <nav class="nav" id="nav"></nav>
+  </header>
+
+  <main class="layout studio">
+    <div id="not-streamer" class="card hidden" style="grid-column: 1 / -1">
+      <h2>Streamer account needed</h2>
+      <p class="muted">Your account can watch and chat, but only streamer accounts can broadcast.
+        Ask the site owner for a streamer invite code, then <a href="/account?mode=signup">create a streamer account</a>.</p>
+    </div>
+
+    <div id="dashboard" class="hidden" style="display: contents">
+      <section class="stack">
+        <div>
+          <div class="player">
+            <video id="preview" autoplay playsinline muted></video>
+            <div id="preview-hint" class="overlay">
+              <div class="overlay-card">
+                <h2>Start your camera</h2>
+                <p class="muted">Pick a source below, then hit “Go live”.</p>
+              </div>
+            </div>
+          </div>
+          <div class="controls">
+            <select id="source" title="Video source">
+              <option value="camera">Camera</option>
+              <option value="screen">Screen share</option>
+            </select>
+            <select id="quality" title="Quality">
+              <option value="480">480p</option>
+              <option value="720" selected>720p</option>
+              <option value="1080">1080p</option>
+            </select>
+            <button id="start-preview" class="btn ghost" type="button">Start preview</button>
+            <button id="mic" class="btn ghost" type="button">🎙️ Mic on</button>
+            <button id="cam" class="btn ghost" type="button">📷 Video on</button>
+            <span class="spacer"></span>
+            <span id="live-pill" class="pill">Offline</span>
+            <button id="go-live" class="btn primary" type="button" disabled>Go live</button>
+            <button id="end-live" class="btn danger hidden" type="button">End stream</button>
+          </div>
+        </div>
+
+        <section class="card">
+          <h3>Stream info</h3>
+          <div class="field">
+            <label for="title">Title</label>
+            <input id="title" maxlength="80" placeholder="What are you streaming today?">
+          </div>
+          <div class="controls" style="margin-top:0">
+            <button id="save-title" class="btn ghost small" type="button">Save</button>
+            <span id="title-status" class="muted small"></span>
+          </div>
+          <p class="small muted" style="margin:0.9rem 0 0">Your channel link:
+            <a id="channel-url" href="/" target="_blank" rel="noopener"></a>
+            <button id="copy-url" class="btn ghost small" type="button">Copy</button>
+          </p>
+        </section>
+
+        <section class="card">
+          <h3>Tip menu</h3>
+          <p class="muted small">Viewers pick from these items. Prices are in <span id="currency-label">USD</span>.</p>
+          <div id="menu-editor"></div>
+          <div class="controls" style="margin-top:0.25rem">
+            <button id="menu-add" class="btn ghost small" type="button">+ Add item</button>
+            <label class="check"><input type="checkbox" id="allow-custom"> Allow custom amounts</label>
+          </div>
+
+          <h4 style="margin-top:1.25rem">Other ways to tip (optional)</h4>
+          <p class="muted small">Links to Venmo, PayPal, Ko-fi, Cash App and so on.</p>
+          <div id="links-editor"></div>
+          <button id="links-add" class="btn ghost small" type="button">+ Add link</button>
+
+          <div class="controls" style="margin-top:1.25rem">
+            <button id="menu-save" class="btn primary" type="button">Save tip menu</button>
+            <span id="menu-status" class="muted small"></span>
+          </div>
+        </section>
+      </section>
+
+      <aside class="stack">
+        <div class="stats card">
+          <div class="stat"><b id="stat-viewers">0</b><span class="muted small">watching</span></div>
+          <div class="stat"><b id="stat-tips">–</b><span class="muted small">tips this stream</span></div>
+          <div class="stat"><b id="stat-count">0</b><span class="muted small">tippers</span></div>
+        </div>
+
+        <section class="card">
+          <h3>Tips</h3>
+          <div id="tip-feed" class="tip-feed">
+            <p class="muted small" id="tip-feed-empty" style="margin:0">Tips show up here as they arrive while you're live.</p>
+          </div>
+        </section>
+
+        <section class="card chat">
+          <h3>Chat</h3>
+          <div id="chat-log" class="chat-log"></div>
+          <form id="host-chat" class="chat-form">
+            <input id="host-text" maxlength="280" placeholder="Message your viewers…" autocomplete="off">
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/vendor/peerjs.min.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/studio.js"></script>
+</body>
+</html>
